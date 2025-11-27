@@ -1,0 +1,184 @@
+.booking-container {
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 2rem;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.booking-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  background-color: #fff;
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Details Section */
+.card-details {
+  display: flex;
+  flex-direction: column;
+  color: #333;
+}
+
+.card-details h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: #222;
+  font-weight: 700;
+}
+
+.card-details img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-details p {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  color: #555;
+  display: flex;
+  align-items: center;
+}
+
+.card-details p i {
+  margin-right: 10px;
+  color: #00aaff;
+  width: 20px;
+}
+
+/* Form Section */
+
+.form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.booking-form h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: #222;
+  font-weight: 700;
+}
+
+ input {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.booking-form input:focus {
+  outline: none;
+  border-color: #00aaff;
+  box-shadow: 0 0 0 3px rgba(0, 170, 255, 0.2);
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(90deg, #00aaff, #0077cc);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 170, 255, 0.4);
+}
+
+/* Booking Success Section */
+.booking-success {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.success-icon {
+  font-size: 5rem;
+  color: #28a745;
+  margin-bottom: 1.5rem;
+  animation: popIn 0.5s ease-out;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  80% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+.booking-success h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.booking-success p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.success-card-details {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 15px;
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+}
+
+.success-card-details h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .booking-form-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  .card-details {
+    border-right: none;
+    padding-right: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .booking-container {
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+
+  .booking-form-grid {
+    padding: 1.5rem;
+  }
+
+  .card-details h2, .booking-form h2 {
+    font-size: 1.8rem;
+  }
+}

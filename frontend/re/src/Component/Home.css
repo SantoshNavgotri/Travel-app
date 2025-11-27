@@ -1,0 +1,344 @@
+/* Home Container */
+.home-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Image Scroller */
+.scroll-img-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 3rem;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.scroll-images {
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  scroll-snap-type: x mandatory;
+}
+
+.scroll-images::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+.scroll-images img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+/* New styles for slide items and captions */
+.slide-item {
+  position: relative;
+  min-width: 100%; /* Ensure each item takes full width for scrolling */
+  height: 500px; /* Match image height */
+  flex-shrink: 0;
+  display: flex;
+  align-items: center; /* Center content vertically if needed */
+  justify-content: center; /* Center content horizontally if needed */
+}
+
+.slide-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Black tint */
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  pointer-events: none; /* Allow interaction with elements behind it */
+}
+
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  z-index: 1;
+  font-size: 28px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.scroll-arrow:hover {
+  background-color: #00aaff;
+}
+
+.left-arrow {
+  left: 15px;
+}
+
+.right-arrow {
+  right: 15px;
+}
+
+/* Card Container */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+/* Product Card */
+.productCart {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+}
+
+.productCart:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.productCart a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.productCart img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+
+.productCart:hover img {
+  transform: scale(1.05);
+}
+
+.productCart-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+}
+
+.productCart-content p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+.productCart-content p:first-child {
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.product-description {
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-style: italic;
+}
+
+.product-rating {
+  font-weight: bold;
+  color: #00aaff;
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.productCart .btn {
+  display: block;
+  width: calc(100% - 3rem);
+  margin: 0 1.5rem 1.5rem;
+  padding: 0.8rem 1rem;
+  background-color: #00aaff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.productCart .btn:hover {
+  background-color: #0088cc;
+  transform: scale(1.03);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .home-container {
+    margin: 1rem auto;
+  }
+
+  .scroll-images img {
+    height: 300px;
+  }
+
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ===== Footer Base ===== */
+.travel-footer {
+  width: 100%;
+  background: #0d1b2a;
+  color: #fff;
+  padding: 50px 20px;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+.star-rating {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.star {
+  font-size: 22px;
+  color: #dcdcdc; /* Empty star */
+  margin-right: 3px;
+  transition: 0.3s;
+}
+
+.star.filled {
+  color: #ffb400; /* Gold star */
+}
+
+.rating-number {
+  margin-left: 8px;
+  font-size: 16px;
+  color: #444;
+  font-weight: bold;
+}
+
+
+/* ===== Main Footer Grid ===== */
+.footer-container {
+  max-width: 1400px;
+  width: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 40px;
+}
+
+/* ===== Footer Sections ===== */
+.footer-section h3,
+.footer-section h4 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #00a8e8;
+}
+
+.footer-section p {
+  color: #c7d5e0;
+  line-height: 1.6;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  color: #c7d5e0;
+  transition: 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+  color: #00a8e8;
+  margin-left: 5px;
+}
+
+/* ===== Social Icons ===== */
+.social-icons a {
+  font-size: 26px;
+  margin-right: 12px;
+  text-decoration: none;
+  color: #c7d5e0;
+  transition: 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #00a8e8;
+  transform: scale(1.1);
+}
+
+/* ===== Footer Bottom ===== */
+.footer-bottom {
+  text-align: center;
+  color: #9bb1c8;
+  margin-top: 35px;
+  padding-top: 20px;
+  border-top: 1px solid #1f2d3a;
+  font-size: 14px;
+}
+
+/* ===== FULL RESPONSIVE (Mobile) ===== */
+@media (max-width: 768px) {
+  .travel-footer {
+    padding: 40px 15px;
+  }
+
+  .footer-container {
+    gap: 25px;
+  }
+
+  .footer-section h3,
+  .footer-section h4 {
+    font-size: 18px;
+  }
+
+  .footer-bottom {
+    font-size: 12px;
+  }
+}
+
+/* ===== EXTRA SMALL DEVICES ===== */
+@media (max-width: 480px) {
+  .footer-section p,
+  .footer-section ul li a {
+    font-size: 14px;
+  }
+
+  .social-icons a {
+    font-size: 22px;
+  }
+}
