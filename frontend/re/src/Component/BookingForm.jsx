@@ -1,30 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
-import './BookingForm.css';
+import React, { useState } from "react";
+import axios from "axios";
+import "./BookingForm.css";
 
 const BookingForm = () => {
-  const { id } = useParams();
-  const [card, setCard] = useState(null);
+  const [selected, setSelected] = useState(null);
+
+  const vehicles = [
+    {
+      id: "bus",
+      name: "Bus Booking",
+      img: "https://cdn-icons-png.flaticon.com/512/69/69928.png",
+      price: "500",
+      destination: "City A → City B",
+      time: "5 Hours",
+      routeDetails: "Highway Route 1",
+    },
+    {
+      id: "car",
+      name: "Car Booking",
+      img: "https://cdn-icons-png.flaticon.com/512/743/743007.png",
+      price: "1200",
+      destination: "City A → City B",
+      time: "3 Hours",
+      routeDetails: "Express Route",
+    },
+    {
+      id: "bike",
+      name: "Bike Booking",
+      img: "https://cdn-icons-png.flaticon.com/512/2972/2972185.png",
+      price: "300",
+      destination: "City A → City B",
+      time: "2 Hours",
+      routeDetails: "Short Route",
+    },
+  ];
+
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
+    name: "",
+    email: "",
+    phone: "",
+    address: "",
+    date: "",
   });
-  const [bookingSuccess, setBookingSuccess] = useState(false);
-
-  useEffect(() => {
-    const fetchCardData = async () => {
-      try {
-        const response = await axios.get(`http://localhost:1234/getproduct/${id}`);
-        setCard(response.data);
-      } catch (error) {
-        console.error('Error fetching card data:', error);
-      }
-    };
-
-    fetchCardData();
-  }, [id]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -32,83 +49,106 @@ const BookingForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
-      const response = await axios.post('http://localhost:1234/book', {
-        ...formData,
-        card: card
+      const payload = {
+        vehicle: selected,
+        user: formData
+      };
+
+      const response = await axios.post("http://localhost:1234/book", payload);
+
+      console.log("Booking Saved:", response.data);
+      alert("Booking Successful!");
+
+      // After submit reset
+      setSelected(null);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        address: "",
+        date: "",
       });
-      console.log('Booking successful:', response.data);
-      setBookingSuccess(true);
-    } catch (error) {
-      console.error('Error booking:', error);
+
+    } catch (err) {
+      console.error("Booking Error:", err);
+      alert("Error while booking!");
     }
   };
 
-  if (!card) {
-    return <div className="loading">Loading...</div>;
-  }
-
-  if (bookingSuccess) {
-    return (
-      <div className="booking-container">
-        <div className="booking-success">
-          <div className="success-icon">
-            <i className="fas fa-check-circle"></i>
-          </div>
-          <h2>Booking Successful!</h2>
-          <p>Your booking for the following trip has been confirmed.</p>
-          <div className="success-card-details">
-            <h3>{card.name}</h3>
-            <p><i className="fas fa-rupee-sign"></i>Rs.{card.price}</p>
-            <p><i className="fas fa-map-marker-alt"></i>{card.destination}</p>
-            <p><i className="fas fa-clock"></i>{card.time}</p>
-            <p><i className="fas fa-bus"></i>{card.routeDetails}</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="booking-container">
-      <div className="booking-form-grid">
-        <div className="card-details">
-          <h2>{card.name}</h2>
-          <img src={card.img} alt={card.name} />
-          <p><i className="fas fa-rupee-sign"></i>Rs.{card.price}</p>
-          <p><i className="fas fa-map-marker-alt"></i>{card.destination}</p>
-          <p><i className="fas fa-clock"></i>{card.time}</p>
-          <p><i className="fas fa-bus"></i>{card.routeDetails}</p>
+
+      {/* ----------- Only Cards Show First ----------- */}
+      {!selected && (
+        <div className="vehicle-card-grid">
+          {vehicles.map((item) => (
+            <div
+              key={item.id}
+              className="vehicle-card"
+              onClick={() => setSelected(item)}
+            >
+              <img src={item.img} alt={item.name} className="vehicle-img" />
+              <h3>{item.name}</h3>
+              <p>₹{item.price}</p>
+              <p>{item.destination}</p>
+            </div>
+          ))}
         </div>
-        <form onSubmit={handleSubmit}>
-          <h2>Your Details</h2>
-          <input
-            type="text"
-            name="name"
-            placeholder="Full Name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Phone Number"
-            value={formData.phone}
-            onChange={handleChange}
-            required
-          />
-          <button type="submit" className="btn-submit">Submit Booking</button>
-        </form>
-      </div>
+      )}
+
+      {/* ------------ Show Selected Card + Form ------------- */}
+      {selected && (
+        <div className="selected-area">
+          <div className="selected-card">
+            <img src={selected.img} alt={selected.name} />
+            <h2>{selected.name}</h2>
+            <p><strong>Price:</strong> ₹{selected.price}</p>
+            <p><strong>Destination:</strong> {selected.destination}</p>
+            <p><strong>Time:</strong> {selected.time}</p>
+          </div>
+
+          {/* -------- Form ---------- */}
+          <form className="booking-form" onSubmit={handleSubmit}>
+            <h2>Enter Your Details</h2>
+
+            <div className="form-grid">
+              <input
+                type="text"
+                name="name"
+                placeholder="Full Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Phone Number"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+              />
+
+         </div>
+
+            <button type="submit" className="btn-submit">
+              Confirm Booking
+            </button>
+          </form>
+        </div>
+      )}
     </div>
   );
 };

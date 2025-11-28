@@ -5,17 +5,32 @@ const bookingSchema = new mongoose.Schema({
     type: Object,
     required: true,
   },
+
+  // Vehicle Type (Bus, Car, Bike)
+  vehicleType: {
+    type: String,
+    required: true,
+  },
+
   name: {
     type: String,
     required: true,
   },
+
   email: {
     type: String,
     required: true,
   },
+
   phone: {
     type: String,
     required: true,
+  },
+
+  // Booking Date
+  date: {
+    type: Date,
+    default: Date.now,
   },
 });
 
