@@ -11,7 +11,7 @@ const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  // Example image array for the slider (replace with actual data if dynamic)
+  
   const sliderData = [
     {
       src: 'https://s7ap1.scene7.com/is/image/incredibleindia/taj-mahal-agra-uttar-pradesh-2-attr-hero?qlt=82&ts=1726650323712',
@@ -133,6 +133,162 @@ const Home = () => {
   ))}
 </div>
 
+    <div className="services-container">
+
+      <h1 className="main-title">Siddharth TravelBooking – All Services & Facilities</h1>
+
+      {/* All Travel Facilities */}
+      <section className="section">
+        <h2 className="section-title">Travel Services (Facilities)</h2>
+
+        <div className="card-grid">
+
+          {/* Bus */}
+          <div className="card">
+            <h3>Bus Booking</h3>
+            <ul>
+              <li>AC / Non-AC Bus</li>
+              <li>Sleeper / Semi Sleeper</li>
+              <li>Live Seat Availability</li>
+              <li>Bus Tracking</li>
+              <li>Instant Cancellation</li>
+            </ul>
+          </div>
+
+          {/* Flight */}
+          <div className="card">
+            <h3>Flight Booking</h3>
+            <ul>
+              <li>One-way / Round Trip</li>
+              <li>Domestic & International</li>
+              <li>Airline Filters</li>
+              <li>E-Ticket via Email/SMS</li>
+            </ul>
+          </div>
+
+          {/* Train */}
+          <div className="card">
+            <h3>Train Booking</h3>
+            <ul>
+              <li>PNR Status Check</li>
+              <li>Live Train Running Status</li>
+              <li>Seat Availability</li>
+              <li>Tatkal Booking</li>
+            </ul>
+          </div>
+
+          {/* Cab */}
+          <div className="card">
+            <h3>Cab / Taxi</h3>
+            <ul>
+              <li>Outstation Cabs</li>
+              <li>Local Cabs (4/8 Hr Packages)</li>
+              <li>Airport Pickup / Drop</li>
+              <li>Fare Estimate</li>
+            </ul>
+          </div>
+
+          {/* Hotel */}
+          <div className="card">
+            <h3>Hotel Booking</h3>
+            <ul>
+              <li>City-wise Search</li>
+              <li>Room Filters (AC / Non-AC)</li>
+              <li>Luxury Rooms</li>
+              <li>Pay at Hotel Option</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Medical Facilities */}
+      <section className="section">
+        <h2 className="section-title">Medical Facility</h2>
+
+        <div className="card-grid">
+          <div className="card red-card">
+            <h3>Emergency Medical Transport</h3>
+            <ul>
+              <li>24/7 Emergency Support</li>
+              <li>Quick Response Team</li>
+            </ul>
+          </div>
+
+          <div className="card red-card">
+            <h3>Ambulance Booking</h3>
+            <ul>
+              <li>AC / Non-AC Ambulance</li>
+              <li>Certified Medical Staff</li>
+            </ul>
+          </div>
+
+          <div className="card red-card">
+            <h3>Hospital-to-Hospital Transfer</h3>
+            <ul>
+              <li>Safe & Fast Transfer</li>
+              <li>Medical Assistance Provided</li>
+            </ul>
+          </div>
+
+          <div className="card red-card">
+            <h3>Doctor-on-Call</h3>
+            <ul>
+              <li>Instant Doctor Availability</li>
+              <li>Primary Checkup Support</li>
+            </ul>
+          </div>
+
+          <div className="card red-card">
+            <h3>Medical Tourism</h3>
+            <ul>
+              <li>Affordable Medical Packages</li>
+              <li>Top Hospitals Tie-up</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Holiday Packages */}
+      <section className="section">
+        <h2 className="section-title">Holiday Packages</h2>
+
+        <div className="card-grid">
+
+          <div className="card">
+            <h3>Goa Tour</h3>
+            <p>3 Nights • Beach • Water Sports • Nightlife</p>
+          </div>
+
+          <div className="card">
+            <h3>Manali Tour</h3>
+            <p>Snowfall • Mountain • Honeymoon Special</p>
+          </div>
+
+          <div className="card">
+            <h3>Rajasthan Tour</h3>
+            <p>Royal Palaces • Camel Safari • Culture</p>
+          </div>
+
+          <div className="card">
+            <h3>Kashmir Tour</h3>
+            <p>Dal Lake • Gulmarg • Heaven on Earth</p>
+          </div>
+
+          <div className="card">
+            <h3>Kerala Tour</h3>
+            <p>Backwaters • Houseboats • Nature Beauty</p>
+          </div>
+
+          <div className="card">
+            <h3>International Packages</h3>
+            <p>Dubai • Singapore • Thailand • Maldives</p>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+
       <footer class="travel-footer">
   <div class="footer-container">
 
@@ -140,7 +296,6 @@ const Home = () => {
       <h3>🚍 Tour & Travels</h3>
       <p>Your trusted partner for safe & comfortable journeys.</p>
     </div>
-
     <div class="footer-section">
       <h4>Quick Links</h4>
       <ul>
