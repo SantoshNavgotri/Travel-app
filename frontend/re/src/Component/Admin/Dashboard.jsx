@@ -84,7 +84,7 @@ const Dashboard = () => {
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
-            <th>Card Name</th>
+            <th>vehicle Name</th>
           </tr>
         </thead>
         <tbody>
@@ -93,7 +93,7 @@ const Dashboard = () => {
               <td>{booking.name}</td>
               <td>{booking.email}</td>
               <td>{booking.phone}</td>
-              <td>{booking.name}</td>
+              <td>{booking.vehicleType}</td>
             </tr>
           ))}
         </tbody>

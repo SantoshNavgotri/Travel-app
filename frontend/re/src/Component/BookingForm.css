@@ -68,13 +68,13 @@
 }
 
 /* ----------------- BOOKING FORM ----------------- */
-.booking-form {
+.booking-form1{
   width: 45%;
   background: white;
   padding: 20px;
   border-radius: 10px;
   border: 1px solid #ddd;
-
+ margin-top: 1px;
   display: flex;
   flex-direction: column; /* Everything in column */
   gap: 15px;
@@ -82,7 +82,7 @@
 }
 
 /* Heading */
-.booking-form h2 {
+.booking-form1 h2 {
   text-align: center;
   font-size: 22px;
   margin: 0 0 10px 0; /* No extra margin */
@@ -92,20 +92,21 @@
 .form-grid {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Minimal gap */
+  /* Minimal gap */
 }
 
 /* Inputs */
-.booking-form input {
-  width: 100%;
+.booking-form1 input {
+  width: 93%;
   padding: 12px;
   font-size: 16px;
   border: 1px solid #bbb;
   border-radius: 6px;
   outline: none;
+  
 }
 
-.booking-form input:focus {
+.booking-form1 input:focus {
   border-color: #007bff;
 }
 
