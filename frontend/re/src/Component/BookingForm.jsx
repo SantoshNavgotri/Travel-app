@@ -4,6 +4,8 @@ import "./BookingForm.css";
 
 const BookingForm = () => {
   const [selected, setSelected] = useState(null);
+  const [bookingSuccess, setBookingSuccess] = useState(false); // SUCCESS FLAG
+  const [savedBooking, setSavedBooking] = useState(null); // STORE DATA
 
   const vehicles = [
     {
@@ -55,28 +57,59 @@ const BookingForm = () => {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
-        vehicleType: selected.name, // IMPORTANT
+        vehicleType: selected.name,
+        selectedVehicle: selected,
       };
 
       const response = await axios.post("http://localhost:1234/book", payload);
-
       console.log("Booking Saved:", response.data);
-      alert("Booking Successful!");
 
-      setSelected(null);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        vehicleType: ""
-      });
-
+      setSavedBooking(payload); // SAVE FOR SUCCESS SCREEN
+      setBookingSuccess(true);  // SHOW SUCCESS UI
     } catch (err) {
       console.error("Booking Error:", err);
       alert("Error while booking!");
     }
   };
 
+  if (bookingSuccess) {
+    return (
+      <div className="booking-container">
+        <div className="booking-success">
+          <div className="success-icon">
+            <i className="fas fa-check-circle"></i>
+          </div>
+
+          <h2>Booking Successful!</h2>
+          <p>Your booking has been confirmed.</p>
+
+          <div className="success-card-details">
+            <h3>{savedBooking.selectedVehicle.name}</h3>
+            <p><strong>Price:</strong> ₹{savedBooking.selectedVehicle.price}</p>
+            <p><strong>Route:</strong> {savedBooking.selectedVehicle.destination}</p>
+            <p><strong>Time:</strong> {savedBooking.selectedVehicle.time}</p>
+            <p><strong>Vehicle Type:</strong> {savedBooking.vehicleType}</p>
+          </div>
+
+          <button
+            className="btn-submit"
+            onClick={() => {
+              setBookingSuccess(false);
+              setSelected(null);
+              setFormData({
+                name: "",
+                email: "",
+                phone: "",
+                vehicleType: "",
+              });
+            }}
+          >
+            Book Another Ride
+          </button>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="booking-container">
 
@@ -144,7 +177,7 @@ const BookingForm = () => {
                 required
               />
 
-              {/* Vehicle type auto fill */}
+              {/* Auto Vehicle Type */}
               <input
                 type="text"
                 name="vehicleType"

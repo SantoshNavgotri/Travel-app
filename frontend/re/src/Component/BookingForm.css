@@ -128,3 +128,49 @@
 .btn-submit:hover {
   background-color: #0056c7;
 }
+/* ================================
+   SUCCESS SCREEN
+=================================*/
+
+.booking-success {
+  width: 380px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Green Check Icon */
+.success-icon {
+  font-size: 65px;
+  color: #28a745;
+  margin-bottom: 10px;
+}
+
+.success-card-details {
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  background: #f6f6f6;
+  text-align: left;
+}
+
+.success-card-details h3 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+  text-align: center;
+}
+
+.success-card-details p {
+  margin: 5px 0;
+  font-size: 15px;
+}
+
+/* Button*
